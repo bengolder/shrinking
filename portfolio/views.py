@@ -2,7 +2,7 @@
 import json
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404
-from portfolio.models import Item, Project, ItemForm, ProjectForm
+from portfolio.models import Item, Project
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpRequest
