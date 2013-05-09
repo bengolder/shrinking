@@ -49,7 +49,7 @@ def people(request):
 
 def project(request, project_slug):
     string = "<h1>%s</h1>" % project_slug
-    return HttpRequest(string)
+    return HttpResponse(string)
     #project = get_object_or_404(Project, slug=project_slug)
     #item_list = project.item_set.order_by('order_key')
     #data = {
