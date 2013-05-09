@@ -37,55 +37,29 @@ def index(request):
 
 def work(request):
     return render_to_response(
-            'work',
+            'work.html',
             add_basics({},'Student Work - Shrinking Cities Studio 2013 - DUSP - MIT'),
+            )
+
+def people(request):
+    return render_to_response(
+            'people.html',
+            add_basics({},'People - Shrinking Cities Studio 2013 - DUSP - MIT'),
             )
 
 def project(request, project_slug):
     project = get_object_or_404(Project, slug=project_slug)
+    item_list = project.item_set.order_by('order_key')
     data = {
             'item_list':[],
             'project':project,
             'extra_css':[],
             'extra_js':[],
             }
-    item_list = project.item_set.order_by('order_key')
-    for i, item in enumerate(item_list):
-        """Here is where I can process porjects and project items as they are
-        retrieved form the database.
-
-        If I have something very dynamic, how should I return it?
-        should I give myself the option of a python script portfolio item?
-        That would be the ultimate in flexibility. But it adds complexity.
-        """
-        if item.media_type == 'template':
-            """If it is a template type object it needs a context
-                and a template to render it in. I think I should just stick to
-                making simple context dictionaries and pasting them in for now.
-
-                template items need a json-like object that has two keys:
-                "template" and "context". "context" must contain a json-like
-                dictionary object. I can make these from scripts.
-
-                in it's context, it can include 'extra_js' and 'extra_css' keys
-                with list values of filenames (assuming the static/js or
-                static/css prefix) that are necessary for rendering the
-                template.
-            """
-            embed_data = json.loads(item.embed_field)
-            t = embed_data['template']
-            c = embed_data['context']
-            item.embed_field = get_template(t).render(Context(c))
-            if 'extra_js' in c:
-                data['extra_js'].extend(c['extra_js'])
-            if 'extra_css' in c:
-                data['extra_css'].extend(c['extra_css'])
-        obj = [i+1, item]
-        data['item_list'].append(obj)
 
     return render_to_response(
-            'portfolio_project.html',
-            add_basics(data, 'portfolio'),
+            'project.html',
+            add_basics(data, project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT'),
             )
 
 

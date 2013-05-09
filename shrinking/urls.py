@@ -9,7 +9,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'portfolio.views.index', name='portfolio'),
+    url(r'^$', 'portfolio.views.index', name='home'),
+    url(r'^work/$', 'portfolio.views.work', name='work'),
+    url(r'^people/$', 'portfolio.views.people', name='people'),
     # url(r'^shrinking/', include('shrinking.foo.urls')),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
