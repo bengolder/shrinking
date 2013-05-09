@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+<div id="map">
+    <img src="{% get_static_prefix %}img/home_map.jpg" >
+</div>
+<a href="/2013/">
+    <div class="titlebar">
+        <span class="bigtitle">Shrinking Cities</span>
+        <span class="smalltitle">Inversions</span>
+    </div>
+</a>
+<div id="navigation">
+    <ul class="navlist">
+        <a href="/2013/work/"><li>Work</li></a>
+        <a href="/2013/people/"><li>People</li></a>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="introtext">
+    {% include "about.html" %}
+</div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="en-us">
+    <head>
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+      <!--<link rel="shortcut icon" href="img/favicon.png">-->
+        <meta charset="UTF-8">
+        <title>{% block title %}{%if page_title %}{{ page_title }}{%else%}Shrinking Cities Studio 2013 - MIT - DUSP {%endif%}{% endblock %}</title>
+        <link rel="stylesheet" href="{% get_static_prefix %}css/base.css" type="text/css"/>
+        {% block css %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+          <div id="container">
+            <div id="header">
+            {% block header %}
+                Here is a header
+            {% endblock %}
+            </div>
+            <div id="content">
+            {% block content %}
+            <span class="special_word anotherclass">This is just a test</span>
+            {% endblock %}
+            </div>
+        {% endblock %}
+        </div>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

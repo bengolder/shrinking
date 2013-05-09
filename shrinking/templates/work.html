@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+<div id="navigation">
+    {% include "navigation.html" %}
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="projects">
+    {% for project in projects %}
+    <a href="/2013/work/{{project.slug}}/">
+        <div class="project">
+            <div class="project-titleblock">
+                <span class="project-title">{{project.title}}</span>
+                <span class="project-subtitle">{{project.subtitle}}</span>
+            </div>
+            <div class="project-snapshot">
+                <img src="{{project.snapshot}}" >
+            </div>
+            <div class="project-text">
+                {{project.text}}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
