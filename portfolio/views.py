@@ -17,10 +17,10 @@ from shrinking.views import navs
 
 
 def add_basics(context=None, page_name=None):
-    project_list = Project.objects.order_by('end_date').reverse()
+    projects = Project.objects.all()
     basics = {
-              'project_list':project_list,
-              'embed_types':('iframe','template'),
+              'projects':projects,
+              'page_title': page_name,
                     }
     if context:
         context.update( basics )
@@ -30,15 +30,15 @@ def add_basics(context=None, page_name=None):
 
 
 def index(request):
-
-    djangopath = os.path.dirname(django.__file__)
-    thisdir = os.getcwd()
-
-    #return HttpResponse("%s<br>%s" % (djangopath, thisdir))
-
     return render_to_response(
-            'portfolio_index.html',
-            add_basics({},'portfolio'),
+            'home.html',
+            add_basics({},'Shrinking Cities Studio 2013 - DUSP - MIT'),
+            )
+
+def work(request):
+    return render_to_response(
+            'work',
+            add_basics({},'Student Work - Shrinking Cities Studio 2013 - DUSP - MIT'),
             )
 
 def project(request, project_slug):
