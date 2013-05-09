@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'portfolio.views.index', name='home'),
     url(r'^work/$', 'portfolio.views.work', name='work'),
-    url(r'^work/(?<project_slug>[\w\-]+)/$', 'portfolio.views.project',
+    url(r'^work/(?P<project_slug>[\w\-]+)/$', 'portfolio.views.project',
         name='project'),
     url(r'^people/$', 'portfolio.views.people', name='people'),
     # url(r'^shrinking/', include('shrinking.foo.urls')),
