@@ -1,5 +1,7 @@
 # portfolio.views.py
+import os
 import json
+import django
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from portfolio.models import Item, Project
@@ -18,7 +20,6 @@ def add_basics(context=None, page_name=None):
     project_list = Project.objects.order_by('end_date').reverse()
     basics = {
               'project_list':project_list,
-              'navlinks':navs(page_name),
               'embed_types':('iframe','template'),
                     }
     if context:
@@ -29,6 +30,12 @@ def add_basics(context=None, page_name=None):
 
 
 def index(request):
+
+    djangopath = os.path.dirname(django.__file__)
+    thisdir = os.getcwd()
+
+    #return HttpResponse("%s<br>%s" % (djangopath, thisdir))
+
     return render_to_response(
             'portfolio_index.html',
             add_basics({},'portfolio'),
