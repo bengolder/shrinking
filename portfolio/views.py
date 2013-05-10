@@ -1,6 +1,7 @@
 # portfolio.views.py
 import os
 import json
+import random
 import django
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -48,21 +49,16 @@ def people(request):
             )
 
 def project(request, project_slug):
-    string = "<h1>%s</h1>" % project_slug
-    return HttpResponse(string)
-    #project = get_object_or_404(Project, slug=project_slug)
-    #item_list = project.item_set.order_by('order_key')
-    #data = {
-            #'item_list':[],
-            #'project':project,
-            #'extra_css':[],
-            #'extra_js':[],
-            #}
-
-    #return render_to_response(
-            #'project.html',
-            #add_basics(data, project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT'),
-            #)
+    project = get_object_or_404(Project, slug=project_slug)
+    item_list = project.item_set.order_by('order_key')
+    context = {
+            'item_list':item_list
+            'project':project,
+            }
+    return render_to_response(
+            'project.html',
+            add_basics(context, project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT'),
+            )
 
 
 
