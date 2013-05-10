@@ -52,7 +52,7 @@ def project(request, project_slug):
     project = get_object_or_404(Project, slug=project_slug)
     item_list = project.item_set.order_by('order_key')
     context = {
-            'item_list':item_list
+            'item_list':item_list,
             'project':project,
             }
     return render_to_response(
