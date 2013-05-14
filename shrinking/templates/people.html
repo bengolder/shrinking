@@ -1,0 +1,27 @@
+{% extends "work.html" %}
+
+<!--people-->
+<!--person-->
+    <!--name-->
+    <!--bio-->
+    <!--image-->
+
+
+{% block content %}
+<div class="people">
+    {% for person in people %}
+        <div class="person">
+            <div class="person-image">
+                <img src="{{person.image.url}}" >
+            </div>
+            <div class="person-text">
+                <span class="person-name">{{person.name}}</span>
+                <span class="person-bio">{{person.bio}}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+

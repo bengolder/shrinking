@@ -15,37 +15,41 @@ from django.template.defaultfilters import slugify
 from django.template.loader import get_template
 from shrinking.settings import STATIC_URL, MEDIA_URL
 from shrinking.views import navs
+from people import Person
 
+def projects(context={}):
+    c = {'projects': Project.objects.all()}
+    return context.update(c)
 
-def add_basics(context=None, page_name=None):
-    projects = Project.objects.all()
+def title(page_name, context={}):
     basics = {
-              'projects':projects,
               'page_title': page_name,
                     }
-    if context:
-        context.update( basics )
-        return context
-    else:
-        return basics
-
+    return context.update(basics)
 
 def index(request):
     return render_to_response(
             'home.html',
-            add_basics({},'Shrinking Cities Studio 2013 - DUSP - MIT'),
+            title('Shrinking Cities Studio 2013 - DUSP - MIT'),
             )
 
 def work(request):
     return render_to_response(
             'work.html',
-            add_basics({},'Student Work - Shrinking Cities Studio 2013 - DUSP - MIT'),
+            title('Student Work - Shrinking Cities Studio 2013 - DUSP - MIT',
+                projects()
+                )
             )
 
 def people(request):
+    bios = Person.objects.all()
+    c = {
+            'people': bios
+            }
     return render_to_response(
             'people.html',
-            add_basics({},'People - Shrinking Cities Studio 2013 - DUSP - MIT'),
+            title('People - Shrinking Cities Studio 2013 - DUSP - MIT',
+                c)
             )
 
 def project(request, project_slug):
@@ -57,7 +61,9 @@ def project(request, project_slug):
             }
     return render_to_response(
             'project.html',
-            add_basics(context, project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT'),
+            title(
+                project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT',
+                context),
             )
 
 
