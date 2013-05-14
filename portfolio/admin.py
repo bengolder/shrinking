@@ -23,9 +23,7 @@ class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
             (None, {'fields': ['name',]}),
             (None, {'fields': ['title', 'subtitle']}),
-            ('Slug and Dates', {'fields': ['slug',], 'classes': ['collapse',]}),
-            ('Image Preview', {'fields':['snapshot',], 'classes':['collapse',]}),
-            ('Project Text', {'fields': ['text',],'classes': ['collapse',]}),
+            (None, {'fields': ['slug','snapshot','text'],}),
             ]
     inlines = [ItemInline]
 
