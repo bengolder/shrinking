@@ -18,18 +18,20 @@ from shrinking.views import navs
 from people.models import Person
 
 def projects(context=None):
-    if not context:
-        context = {}
     c = {'projects': Project.objects.all()}
-    return context.update(c)
+    if not context:
+        return c
+    else:
+        return context.update(c)
 
 def title(page_name, context=None):
-    if not context:
-        context = {}
-    basics = {
+    c = {
               'page_title': page_name,
                     }
-    return context.update(basics)
+    if not context:
+        return c
+    else:
+        return context.update(c)
 
 def index(request):
     return render_to_response(
