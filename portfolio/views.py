@@ -15,7 +15,7 @@ from django.template.defaultfilters import slugify
 from django.template.loader import get_template
 from shrinking.settings import STATIC_URL, MEDIA_URL
 from shrinking.views import navs
-from people import Person
+from people.models import Person
 
 def projects(context={}):
     c = {'projects': Project.objects.all()}
