@@ -63,14 +63,13 @@ def project(request, project_slug):
     project = get_object_or_404(Project, slug=project_slug)
     item_list = project.item_set.order_by('order_key')
     context = {
+            'page_title': project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT',
             'item_list':item_list,
             'project':project,
             }
     return render_to_response(
             'project.html',
-            title(
-                project.title + ' - Shrinking Cities Studio 2013 - DUSP - MIT',
-                context),
+            context,
             )
 
 
