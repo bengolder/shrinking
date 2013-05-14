@@ -12,6 +12,12 @@ class ItemInline(admin.TabularInline):
     model = Item
     exclude = ['height', 'width']
     extra = 1
+    fields = (
+            'order_key',
+            'image',
+            'title',
+            'text',
+            )
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
