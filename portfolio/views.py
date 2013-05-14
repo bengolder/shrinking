@@ -40,23 +40,23 @@ def index(request):
             )
 
 def work(request):
+    c = projects()
+    c.update( title('Student Work - Shrinking Cities Studio 2013 - DUSP - MIT')
+            )
     return render_to_response(
             'work.html',
-            title('Student Work - Shrinking Cities Studio 2013 - DUSP - MIT',
-                projects()
-                )
+            c
             )
 
 def people(request):
     bios = Person.objects.all()
     c = {
-            'people': bios
+            'page_title':'People - Shrinking Cities Studio 2013 - DUSP - MIT',
+            'people': bios,
             }
     return render_to_response(
             'people.html',
-            title('People - Shrinking Cities Studio 2013 - DUSP - MIT',
-                c
-                )
+            c
             )
 
 def project(request, project_slug):
