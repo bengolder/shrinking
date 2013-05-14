@@ -21,7 +21,6 @@ class Item(models.Model):
     MEDIA_TYPES = (
             ('image','image'),
             ('iframe','iframe'),
-            ('template','template'),
     )
 
     order_key = models.IntegerField( default=4 )

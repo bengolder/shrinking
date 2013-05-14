@@ -5,7 +5,7 @@ class ItemAdmin(admin.ModelAdmin):
     fieldsets = [
             ('Project', {'fields': ['project', 'order_key', 'media_type', 'title']}),
             ('Item Text', {'fields': ['text',],'classes':['collapse']}),
-            ('Image', {'fields':['image','embed_field'], 'classes':['collapse']}),
+            ('Image', {'fields':['image',], 'classes':['collapse']}),
             ]
 
 class ItemInline(admin.TabularInline):
