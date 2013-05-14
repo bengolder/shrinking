@@ -3,15 +3,20 @@ from django.forms import ModelForm
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.CharField(max_length=30)
-    title = models.CharField(max_length=50, blank=True, null=True)
+    name = models.CharField(max_length=50,
+            help_text="This is not very important. It's just used to name the project on this page, so you remember which one it is.",
+            )
+    slug = models.CharField(max_length=30,
+            help_text="""only lowercase letters or numbers or dashes, no spaces. This will be used to create the URL link to your project."""
+            )
+    title = models.CharField(max_length=50, blank=True, null=True,)
     subtitle = models.CharField(max_length=100, blank=True, null=True)
     text = models.TextField( blank=True, null=True )
     snapshot = models.ImageField(
             upload_to='images/portfolio',
             blank=True,
             null=True,
+            help_text="Add a preview image for your project. This will be used on the project index page.",
             )
 
     def __unicode__(self):
