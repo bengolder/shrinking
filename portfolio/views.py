@@ -17,11 +17,15 @@ from shrinking.settings import STATIC_URL, MEDIA_URL
 from shrinking.views import navs
 from people.models import Person
 
-def projects(context={}):
+def projects(context=None):
+    if not context:
+        context = {}
     c = {'projects': Project.objects.all()}
     return context.update(c)
 
-def title(page_name, context={}):
+def title(page_name, context=None):
+    if not context:
+        context = {}
     basics = {
               'page_title': page_name,
                     }
@@ -49,7 +53,8 @@ def people(request):
     return render_to_response(
             'people.html',
             title('People - Shrinking Cities Studio 2013 - DUSP - MIT',
-                c)
+                c
+                )
             )
 
 def project(request, project_slug):
