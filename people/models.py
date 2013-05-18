@@ -7,6 +7,8 @@ class Person(models.Model):
     image = models.ImageField(
             upload_to='images/people',
             )
+    def __unicode__(self):
+        return self.name
 
 
 
