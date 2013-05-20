@@ -36,6 +36,15 @@ will be a ‘blank slate’ ready for transformation into whatever the owner, th
 deem appropriate. It is this transformation that the studio will theorize and, in proposal form, 
 realize. 
     </p>
+    {% if downloads %}
+    <ul class="downloads">
+    {% for download in downloads %}
+      <li class="download">
+      <a href="{{download.url}}">{{download.title}}</a>
+      </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 
 

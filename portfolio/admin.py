@@ -1,4 +1,4 @@
-from portfolio.models import Project, Item
+from portfolio.models import Project, Item, Download
 from django.contrib import admin
 
 class ItemAdmin(admin.ModelAdmin):
@@ -29,3 +29,4 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Item, ItemAdmin)
+admin.site.register(Download)
