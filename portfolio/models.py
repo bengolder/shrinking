@@ -47,3 +47,14 @@ class Item(models.Model):
     def __unicode__(self):
         return self.title
 
+class Download(models.Model):
+    title = models.CharField(max_length=50, blank=True, null=True )
+    file = models.FileField(
+            upload_to='files/downloads',
+            )
+    description = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title
+
+
