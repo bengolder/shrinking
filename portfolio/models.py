@@ -9,13 +9,11 @@ class Project(models.Model):
     slug = models.CharField(max_length=30,
             help_text="""only lowercase letters or numbers or dashes, no spaces. This will be used to create the URL link to your project."""
             )
-    title = models.CharField(max_length=50, blank=True, null=True,)
-    subtitle = models.CharField(max_length=100, blank=True, null=True)
-    text = models.TextField( blank=True, null=True )
+    title = models.CharField(max_length=50)
+    subtitle = models.CharField(max_length=100)
+    text = models.TextField()
     snapshot = models.ImageField(
             upload_to='images/portfolio',
-            blank=True,
-            null=True,
             help_text="Add a preview image for your project. This will be used on the project index page.",
             )
 
@@ -29,7 +27,7 @@ class Item(models.Model):
     )
 
     order_key = models.IntegerField( default=4 )
-    title = models.CharField(max_length=50, blank=True, null=True )
+    title = models.CharField(max_length=50)
     image = models.ImageField(
             # this could be a function instead of a string
             upload_to='images/portfolio',
