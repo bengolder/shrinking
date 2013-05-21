@@ -10,7 +10,11 @@
 {% block content %}
 <div class="people">
     {% for person in people %}
+        {% if person.title == "teacher" %}
+        <div class="person instructor">
+          {% else %}
         <div class="person">
+          {% endif %}
             <div class="person-image">
                 <img src="{{person.image.url}}" >
             </div>
