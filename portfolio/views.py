@@ -49,7 +49,7 @@ def work(request):
             )
 
 def people(request):
-    bios = Person.objects.order_by('-title','name')
+    bios = Person.objects.order_by('title','-name')
     c = {
             'page_title':'People - Shrinking Cities Studio 2013 - DUSP - MIT',
             'people': bios,
