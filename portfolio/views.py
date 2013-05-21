@@ -18,7 +18,8 @@ from shrinking.views import navs
 from people.models import Person
 
 def projects(context=None):
-    c = {'projects': Project.objects.order_by('?')}
+    c = {'projects': Project.objects.all()}
+    random.shuffle(c['projects'])
     if not context:
         return c
     else:
