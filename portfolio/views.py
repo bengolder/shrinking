@@ -18,7 +18,7 @@ from shrinking.views import navs
 from people.models import Person
 
 def projects(context=None):
-    c = {'projects': Project.objects.all()}
+    c = {'projects': Project.objects.order_by('?')}
     if not context:
         return c
     else:
@@ -49,7 +49,7 @@ def work(request):
             )
 
 def people(request):
-    bios = Person.objects.order_by('name')
+    bios = Person.objects.order_by('-title','name')
     c = {
             'page_title':'People - Shrinking Cities Studio 2013 - DUSP - MIT',
             'people': bios,
