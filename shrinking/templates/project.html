@@ -34,10 +34,12 @@
 <div class="itemwrapper">
   {% for item in item_list %}
   <div class="item">
-    <div class="item-image"><img src="{{item.image.url}}" ></div>
-    <div class="item-text">
+    <div class="item-image">
+      <img src="{{item.image.url}}" >
+    </div>
+    <div class="item-textblock">
       <span class="item-title">{{item.title}}</span>
-      <span class="item-text">{{item.text}}</span>
+      <span class="item-description">{{item.text}}</span>
     </div>
   </div>
   {% endfor %}
