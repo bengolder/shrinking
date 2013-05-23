@@ -18,8 +18,14 @@ from shrinking.views import navs
 from people.models import Person
 
 def projects(context=None):
-    c = {'projects': list(Project.objects.all())}
-    random.shuffle(c['projects'])
+    projects = list(Project.objects.all())
+    random.shuffle(projects)
+    xxlines = [p for p in projects if 'XX' in p.name]
+    projects = [p for p in projects if 'XX' not in p.name]
+    c = {
+            'projects': projects,
+            'xxlines': xxlines,
+            }
     if not context:
         return c
     else:

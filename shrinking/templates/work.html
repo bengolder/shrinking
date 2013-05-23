@@ -11,20 +11,12 @@
 {% block content %}
 <div class="projects">
     {% for project in projects %}
-    <a href="/2013/work/{{project.slug}}/">
-        <div class="project">
-            <div class="project-titleblock">
-                <span class="project-title">{{project.title}}</span>
-                <span class="project-subtitle">{{project.subtitle}}</span>
-            </div>
-            <div class="project-snapshot">
-                <img src="{{project.snapshot.url}}" >
-            </div>
-            <div class="project-text">
-                {{project.text}}
-            </div>
-        </div>
-    </a>
+    {% include "project_list_style.html" %}
+    {% endfor %}
+</div>
+<div class="projects xxlines">
+    {% for project in xxlines %}
+    {% include "project_list_style.html" %}
     {% endfor %}
 </div>
 {% endblock %}
