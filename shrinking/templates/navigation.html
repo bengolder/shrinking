@@ -5,6 +5,14 @@
     </div>
 </a>
 <ul class="navlist">
+    {% if "Work" in page_title %}
+    <a href="/2013/work/"><li class="highlighted-nav">Work</li></a>
+    {% else %}
     <a href="/2013/work/"><li>Work</li></a>
+    {% endif %}
+    {% if "People" in page_title %}
+    <a href="/2013/people/"><li class="highlighted-nav">People</li></a>
+    {% else %}
     <a href="/2013/people/"><li>People</li></a>
+    {% endif %}
 </ul>
